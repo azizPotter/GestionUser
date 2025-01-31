@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule  } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { User } from '../../models/user.model';
+import { Toast } from '@capacitor/toast';
 
 @Component({
   selector: 'app-user-form',
@@ -59,7 +60,7 @@ export class UserFormPage implements OnInit {
     }
   }
 
-  saveUser() {
+async saveUser() {
    
     if (this.userForm.invalid) {
       return;
@@ -70,9 +71,19 @@ export class UserFormPage implements OnInit {
     if (this.isEditMode && this.user) {
     
       this.userService.updateUser({ ...this.user, ...userData });
+      await Toast.show({
+        text: 'Utilisateur modifier!',
+        duration: 'short',
+        position: 'bottom',
+      });
     } else {
   
       this.userService.addUser(userData);
+      await Toast.show({
+        text: 'Utilisateur créer!',
+        duration: 'short',
+        position: 'bottom',
+      });
     }
 
     this.router.navigate(['/user-list']);

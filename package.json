@@ -30,6 +30,7 @@
     "@capacitor/haptics": "7.0.0",
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
+    "@capacitor/toast": "^7.0.0",
     "@ionic/angular": "^8.4.2",
     "@jcesarmobile/ssl-skip": "0.4.0",
     "firebase": "^11.2.0",
