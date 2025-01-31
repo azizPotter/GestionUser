@@ -1,22 +1,29 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { UserListPage } from './pages/user-list/user-list.page';
+import { UserFormPage } from './pages/user-form/user-form.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'user-list',
+    component: UserListPage,
+  },
+  {
+    path: 'user-form',
+    component: UserFormPage,
+  },
+  {
+    path: 'user-form/:id',
+    component: UserFormPage,  
   },
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    redirectTo: '/user-list',
+    pathMatch: 'full',
   },
 ];
-
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

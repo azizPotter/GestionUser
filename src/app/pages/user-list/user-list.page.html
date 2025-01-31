@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste des utilisateurs</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/user-form']" fill="solid" color="primary">
+        Ajouter un utilisateur
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <app-user-card *ngFor="let user of users" [user]="user" (userDeleted)="Reload()"></app-user-card>
+  </ion-list>
+</ion-content>
